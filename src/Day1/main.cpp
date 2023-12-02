@@ -34,8 +34,8 @@ int main()
 
 	while (std::getline(input, cur))
 	{
-		// Iterate over potential worded number.
-		for (auto itr = map.begin(); itr != map.end(); ++itr)
+		// Iterate over all worded numbers.
+		for (std::map<std::string, std::string>::const_iterator itr = map.begin(); itr != map.end(); ++itr)
 		{
 			// Replace all instances with its numeric equivalent.
 			size_t pos = cur.find(itr->first);
@@ -50,23 +50,21 @@ int main()
 		}
 
 		// Store the first and last number in the sequence
-		// in vals[0] and vals[1] respectively.
-		char* vals = new char[2] {0, 0};
+		// in values[0] and values[1] respectively.
+		char* values = new char[2] {0, 0};
 
 		for (int i = 0; i < cur.size(); ++i)
 		{
 			// ASCII character codes 48-57 represent the numbers 0-9.
 			if (cur[i] < 48 || cur[i] > 57) continue;
 
-			if (vals[0] == 0) vals[0] = cur[i];
-			else vals[1] = cur[i];
+			if (values[0] == 0) values[0] = cur[i];
+			values[1] = cur[i];
 		}
 
-		if (vals[1] == 0) vals[1] = vals[0];
+		sum += std::strtol(values, nullptr, 10);
 
-		sum += std::strtol(vals, nullptr, 10);
-
-		delete[] vals;
+		delete[] values;
 	}
 
 	input.close();
