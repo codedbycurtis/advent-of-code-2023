@@ -30,7 +30,7 @@ int main()
 		int red = 0, green = 0, blue = 0;
 		bool isPossible = true;
 
-		// Find the semi-colon that comes after each game ID.
+		// Find the colon that comes after each game ID.
 		size_t pos = line.find(":", 0);
 		int gameId = strtol(line.substr(5, pos - 5).c_str(), nullptr, 10);
 
